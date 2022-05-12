@@ -85,7 +85,7 @@ class Sidebar extends Component {
           <li className={ this.isPathActive('/icons') ? 'nav-item active' : 'nav-item' }>
             <div className={ this.state.iconsMenuOpen ? 'nav-link menu-expanded' : 'nav-link' } onClick={ () => this.toggleMenuState('iconsMenuOpen') } data-toggle="collapse">
               <span className="icon-bg"><i className="mdi mdi-contacts menu-icon"></i></span>
-              <span className="menu-title"><Trans>user and role management</Trans></span>
+              <span className="menu-title"><Trans>user management</Trans></span>
               <i className="menu-arrow"></i>
             </div>
             <Collapse in={ this.state.iconsMenuOpen }>

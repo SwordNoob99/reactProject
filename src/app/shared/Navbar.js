@@ -20,26 +20,7 @@ class Navbar extends Component {
           </button>
          
           <ul className="navbar-nav navbar-nav-right">
-            <li className="nav-item nav-profile d-none d-xl-flex">
-              <Dropdown alignRight>
-                <Dropdown.Toggle className="nav-link count-indicator">
-                  <Trans>Reports</Trans>
-                </Dropdown.Toggle>
-                <Dropdown.Menu className="preview-list navbar-dropdown">
-                  <Dropdown.Item className="dropdown-item d-flex align-items-center" href="!#" onClick={evt =>evt.preventDefault()}>
-                    <i className="mdi mdi-file-pdf mr-2"></i><Trans>PDF</Trans>
-                  </Dropdown.Item>
-                  <div className="dropdown-divider"></div>
-                  <Dropdown.Item className="dropdown-item d-flex align-items-center" href="!#" onClick={evt =>evt.preventDefault()}>
-                  <i className="mdi mdi-file-excel mr-2"></i><Trans>Excel</Trans>
-                  </Dropdown.Item>
-                  <div className="dropdown-divider"></div>
-                  <Dropdown.Item className="dropdown-item d-flex align-items-center" href="!#" onClick={evt =>evt.preventDefault()}>
-                    <i className="mdi mdi-file-word mr-2"></i><Trans>doc</Trans>
-                  </Dropdown.Item>
-                </Dropdown.Menu>
-              </Dropdown>
-            </li>
+          
             <li className="nav-item nav-profile d-none d-xl-flex">
               <Dropdown alignRight>
                 <Dropdown.Toggle className="nav-link count-indicator">
@@ -47,12 +28,10 @@ class Navbar extends Component {
                 </Dropdown.Toggle>
                 <Dropdown.Menu className="preview-list navbar-dropdown">
                   <Dropdown.Item className="dropdown-item d-flex align-items-center" href="!#" onClick={evt =>evt.preventDefault()}>
-                    <i className="mdi mdi-eye-outline mr-2"></i><Trans>View Project</Trans>
+                    <i className="mdi mdi-eye-outline mr-2"></i><Link className= 'nav-link' to="/form-elements/Project"><Trans>View Projects</Trans></Link>
+                    
                   </Dropdown.Item>
-                  <div className="dropdown-divider"></div>
-                  <Dropdown.Item className="dropdown-item d-flex align-items-center" href="!#" onClick={evt =>evt.preventDefault()}>
-                    <i className="mdi mdi-pencil-outline mr-2"></i><Trans>Edit Project</Trans>
-                  </Dropdown.Item>
+                 
                 </Dropdown.Menu>
               </Dropdown>
             </li>

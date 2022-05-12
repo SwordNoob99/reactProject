@@ -12,6 +12,7 @@ const Typography = lazy(() => import('./basic-ui/Typography'));
 const BasicElements = lazy(() => import('./form-elements/BasicElements'));
 const planning = lazy(() => import('./form-elements/planning'));
 const Project = lazy(() => import('./form-elements/Project'));
+const ProjectDataTable = lazy(() => import('./form-elements/ProjectComponents/viewProjectsComponent'));
 const ConstructionType = lazy(() => import('./form-elements/ConstructionType'));
 const lotDeTravail = lazy(() => import('./form-elements/lotDeTravail'));
 const BasicTable = lazy(() => import('./tables/BasicTable'));
@@ -44,6 +45,7 @@ class AppRoutes extends Component {
           <Route path="/form-Elements/ConstructionType" component={ ConstructionType } />
           <Route path="/form-elements/lotDeTravail" component={ lotDeTravail } />
           <Route path="/form-elements/Project" component={ Project } />
+          <Route path="/viewProjects" component={ ProjectDataTable } />
 
           <Route path="/icons/mdi" component={ Mdi } />
 

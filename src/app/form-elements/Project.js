@@ -3,25 +3,60 @@ import { Form } from 'react-bootstrap';
 import DatePicker from "react-datepicker";
 import bsCustomFileInput from 'bs-custom-file-input';
 import axios from 'axios';
+import { useState } from 'react';
 
 export class Project extends Component {
-  state = {
-    name: '' ,
 
+  constructor()  {
+
+    super();
+    this.state = {
+      projectName : '',
+      description : '',
+      image : ''
+    }
+
+    this.handleChange=this.handleChange.bind(this);
   }
 
+
   handleChange = event => {
-    this.setState({ name: event.target.value });
+
+    if(event.target.name == 'image'){
+
+
+      let files = event.target.files;
+        let reader = new FileReader();
+        reader.readAsDataURL(files[0]);
+        reader.onload = (e) => {
+            
+          this.setState({
+              image: e.target.result,
+            })
+      }
+    }else{
+      
+      const value = event.target.value;
+    this.setState({ 
+      ...this.state,
+      [event.target.name]: value });
+    
+    }
+
+    console.log(this.state.image)
   }
 
   handleSubmit = event => {
     event.preventDefault();
+      console.log('we got here');
+ 
 
-    const user = {
-      name: this.state.name
-    };
+      
 
-    axios.post(`https://jsonplaceholder.typicode.com/users`, { user })
+ 
+    axios.post(`http://127.0.0.1:8082/api/v1/Project/project`, { image : this.state.image ,
+    name : this.state.projectName ,
+    description : this.state.description })
       .then(res => {
         console.log(res);
         console.log(res.data);
@@ -60,10 +95,10 @@ export class Project extends Component {
               <div className="card-body">
                 <h4 className="card-title">Project</h4>
                
-                <form className="forms-sample">
+                <form className="forms-sample"  onSubmit={this.handleSubmit}>
                   <Form.Group>
                     <label htmlFor="exampleInputName1">Name</label>
-                    <Form.Control type="text" className="form-control" id="exampleInputName1" placeholder="Name" name='name' />
+                    <Form.Control value={this.state.projectName} type="text" className="form-control" id="exampleInputName1" placeholder="Name" name='projectName' onChange={this.handleChange} />
                   </Form.Group>
                   <Form.Group>
                     <label htmlFor="exampleSelectGender">Lot De travaus</label>
@@ -83,7 +118,7 @@ export class Project extends Component {
                   <Form.Group>
                     <label>File upload</label>
                     <div className="custom-file">
-                      <Form.Control type="file" className="form-control visibility-hidden" id="customFileLang" lang="es" name='img_path'/>
+                      <Form.Control type="file" className="form-control visibility-hidden" id="customFileLang" lang="es" name='image' onChange={this.handleChange}/>
                       <label className="custom-file-label" htmlFor="customFileLang">Upload image</label>
                     </div>
                   </Form.Group>
@@ -93,7 +128,7 @@ export class Project extends Component {
                   </Form.Group>
                   <Form.Group>
                     <label htmlFor="exampleTextarea1">Textarea</label>
-                    <textarea className="form-control" id="exampleTextarea1" name='description' rows="4"></textarea>
+                    <textarea className="form-control" id="exampleTextarea1" name='description' rows="4" onChange={this.handleChange}></textarea>
                   </Form.Group>
                   <button type="submit" className="btn btn-primary mr-2" >Submit</button>
                   <button className="btn btn-light">Cancel</button>

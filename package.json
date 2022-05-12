@@ -4,6 +4,7 @@
   "homepage": "https://bootstrapdash.com/demo/connect-plus-react-free/template/demo_1/preview",
   "private": true,
   "dependencies": {
+    "@material-ui/core": "^4.12.4",
     "@mdi/font": "^4.2.95",
     "@tinymce/tinymce-react": "^3.3.2",
     "axios": "^0.27.2",
